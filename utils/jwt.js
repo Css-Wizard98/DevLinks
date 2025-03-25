@@ -16,8 +16,8 @@ export const verifyToken = (token, secret) => {
     return jwt.verify(token, secret);
 };
 
-export const issueTokens = (user) => {
-    const payload = { id: user.id, email: user.email };
+export const issueTokens = (user, jti) => {
+    const payload = { id: user.idusers, email: user.email, jti };
     return {
         accessToken: generateAccessToken(payload),
         refreshToken: generateRefreshToken(payload)
